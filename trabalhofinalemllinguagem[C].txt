@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Definição da estrutura Cliente
+struct Cliente {
+    int id;
+    char nome[50];
+    char email[50];
+};
+
+// Definição da estrutura Produto
+struct Produto {
+    int id;
+    char nome[50];
+    double preco;
+    int estoque;
+};
+
+// Função para cadastrar um novo cliente
+void cadastrarCliente() {
+    struct Cliente cliente;
+    FILE *arquivo;
+    arquivo = fopen("clientes.txt", "a");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo de clientes.\n");
+        exit(1);
+    }
+    printf("Digite o ID do cliente: ");
+    scanf("%d", &cliente.id);
+    printf("Digite o nome do cliente: ");
+    scanf("%s", cliente.nome);
+    printf("Digite o e-mail do cliente: ");
+    scanf("%s", cliente.email);
+    fprintf(arquivo, "%d;%s;%s\n", cliente.id, cliente.nome, cliente.email);
+    fclose(arquivo);
+}
+
+// Função para cadastrar um novo produto
+void cadastrarProduto() {
+    struct Produto produto;
+    FILE *arquivo;
+    arquivo = fopen("produtos.txt", "a");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo de produtos.\n");
+        exit(1);
+    }
+    printf("Digite o ID do produto: ");
+    scanf("%d", &produto.id);
+    printf("Digite o nome do produto: ");
+    scanf("%s", produto.nome);
+    printf("Digite o preco do produto: ");
+    scanf("%lf", &produto.preco);
+    printf("Digite a quantidade em estoque do produto: ");
+    scanf("%d", &produto.estoque);
+    fprintf(arquivo, "%d;%s;%.2f;%d\n", produto.id, produto.nome, produto.preco, produto.estoque);
+    fclose(arquivo);
+}
+
+int main() {
+    int opcao;
+    while (1) {
+        printf("1 - Cadastrar cliente\n");
+        printf("2 - Cadastrar produto\n");
+         printf("3 - visualizar clientes listados\n");
+          printf("4 - visualizar produtos listados\n");
+        printf("5 - Sair\n");
+        printf("Digite a opcao desejada: ");
+        scanf("%d", &opcao);
+        switch (opcao) {
+            case 1:
+                cadastrarCliente();
+                break;
+            case 2:
+                cadastrarCliente();
+                break;
+                        case 3:
+                cadastrarCliente();
+                break;
+            case 4:
+                cadastrarCliente();
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("Opcao invalida.\n");
+        }
+    }
+    return 0;
+}
